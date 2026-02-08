@@ -1,41 +1,40 @@
 import { motion } from "framer-motion";
+import MapSectionWrapper from "./MapSectionWrapper";
 
 const categories = [
   {
-    title: "Frontend",
+    title: "⚔ Combat Arts (Frontend)",
     skills: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"],
+    color: "gold",
   },
   {
-    title: "Programming",
+    title: "🧪 Arcane Knowledge (Programming)",
     skills: ["Java", "Python"],
+    color: "mystic",
   },
   {
-    title: "Libraries & Tools",
+    title: "🛡 Equipment (Libraries & Tools)",
     skills: ["React", "Tailwind", "Vite", "Git", "GitHub"],
+    color: "emerald",
   },
   {
-    title: "Concepts",
+    title: "📖 Ancient Scrolls (Concepts)",
     skills: ["Full-stack Basics", "API Integration", "UI/UX Development"],
+    color: "amber",
   },
 ];
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="section-container">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">
-          My <span className="gradient-text">Skills</span>
-        </h2>
-        <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <MapSectionWrapper
+      id="skills"
+      title="Skill"
+      titleAccent="Tree"
+      icon="⚡"
+      locationLabel="Training Grounds"
+      side="right"
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {categories.map((cat, i) => (
           <motion.div
             key={cat.title}
@@ -43,15 +42,12 @@ export default function SkillsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="glass-card-hover p-6"
+            className="fantasy-card-hover p-5"
           >
-            <h3 className="text-primary font-semibold text-lg mb-4">{cat.title}</h3>
+            <h3 className="text-gold font-fantasy text-sm mb-4">{cat.title}</h3>
             <div className="flex flex-wrap gap-2">
               {cat.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1.5 text-sm rounded-md bg-muted/60 text-foreground/80 border border-border/50 hover:border-primary/40 hover:text-primary transition-all duration-300"
-                >
+                <span key={skill} className="skill-orb">
                   {skill}
                 </span>
               ))}
@@ -59,6 +55,6 @@ export default function SkillsSection() {
           </motion.div>
         ))}
       </div>
-    </section>
+    </MapSectionWrapper>
   );
 }
