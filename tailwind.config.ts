@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Google Sans Flex"', 'system-ui', 'sans-serif'],
+        fantasy: ['"Cinzel"', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -50,14 +51,22 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+        },
+        emerald: {
+          DEFAULT: "hsl(var(--emerald))",
+        },
+        mystic: {
+          DEFAULT: "hsl(var(--mystic-purple))",
+        },
+        amber: {
+          DEFAULT: "hsl(var(--warm-amber))",
+        },
         glass: {
           DEFAULT: "hsl(var(--glass))",
           border: "hsl(var(--glass-border))",
-        },
-        neon: {
-          cyan: "hsl(var(--neon-cyan))",
-          purple: "hsl(var(--neon-purple))",
-          blue: "hsl(var(--neon-blue))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -86,11 +95,16 @@ export default {
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-15px)" },
         },
         "glow-pulse": {
           "0%, 100%": { opacity: "0.4" },
           "50%": { opacity: "1" },
+        },
+        "sparkle": {
+          "0%": { transform: "scale(0) rotate(0deg)", opacity: "0" },
+          "50%": { transform: "scale(1) rotate(180deg)", opacity: "1" },
+          "100%": { transform: "scale(0) rotate(360deg)", opacity: "0" },
         },
       },
       animation: {
@@ -98,6 +112,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "sparkle": "sparkle 2s ease-in-out infinite",
       },
     },
   },

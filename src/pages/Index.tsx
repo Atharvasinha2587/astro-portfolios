@@ -5,10 +5,14 @@ import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
+import MagicBackground from "@/components/MagicBackground";
+import FloatingSparkles from "@/components/FloatingSparkles";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <MagicBackground />
+      <FloatingSparkles />
       <Navbar />
       <HeroSection />
       <AboutSection />
@@ -17,8 +21,10 @@ const Index = () => {
       <ExperienceSection />
       <ContactSection />
 
-      <footer className="text-center py-8 text-muted-foreground/50 text-sm border-t border-border/30">
-        © 2026 Atharva. Built with passion.
+      <footer className="relative z-10 text-center py-8 text-muted-foreground/40 text-sm border-t border-gold/10">
+        <span className="font-fantasy">© 2026 Atharva</span>
+        <span className="mx-2">·</span>
+        <span className="text-gold/30">Built with passion ✦</span>
       </footer>
     </div>
   );

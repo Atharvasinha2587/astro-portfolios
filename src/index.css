@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,50 +7,54 @@
 
 @layer base {
   :root {
-    --background: 230 25% 7%;
-    --foreground: 210 40% 95%;
+    --background: 235 30% 8%;
+    --foreground: 40 30% 90%;
 
-    --card: 230 25% 11%;
-    --card-foreground: 210 40% 95%;
+    --card: 235 25% 13%;
+    --card-foreground: 40 30% 90%;
 
-    --popover: 230 25% 11%;
-    --popover-foreground: 210 40% 95%;
+    --popover: 235 25% 13%;
+    --popover-foreground: 40 30% 90%;
 
-    --primary: 195 100% 50%;
-    --primary-foreground: 230 25% 7%;
+    --primary: 42 90% 55%;
+    --primary-foreground: 235 30% 8%;
 
-    --secondary: 260 80% 60%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 160 50% 40%;
+    --secondary-foreground: 40 30% 95%;
 
-    --muted: 230 20% 18%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 235 20% 16%;
+    --muted-foreground: 40 15% 55%;
 
-    --accent: 195 100% 50%;
-    --accent-foreground: 230 25% 7%;
+    --accent: 280 45% 55%;
+    --accent-foreground: 40 30% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 230 20% 20%;
-    --input: 230 20% 20%;
-    --ring: 195 100% 50%;
+    --border: 235 18% 22%;
+    --input: 235 18% 22%;
+    --ring: 42 90% 55%;
 
     --radius: 0.75rem;
 
-    --neon-cyan: 195 100% 50%;
-    --neon-purple: 260 80% 60%;
-    --neon-blue: 220 90% 56%;
-    --glass: 230 25% 14%;
-    --glass-border: 230 20% 24%;
+    --gold: 42 90% 55%;
+    --gold-light: 45 85% 70%;
+    --emerald: 160 50% 40%;
+    --mystic-purple: 280 45% 55%;
+    --warm-amber: 30 80% 50%;
+    --sky-magic: 200 60% 50%;
+    --glass: 235 25% 13%;
+    --glass-border: 42 40% 25%;
+    --parchment: 35 30% 85%;
 
-    --sidebar-background: 230 25% 7%;
-    --sidebar-foreground: 210 40% 95%;
-    --sidebar-primary: 195 100% 50%;
-    --sidebar-primary-foreground: 230 25% 7%;
-    --sidebar-accent: 230 20% 18%;
-    --sidebar-accent-foreground: 210 40% 95%;
-    --sidebar-border: 230 20% 20%;
-    --sidebar-ring: 195 100% 50%;
+    --sidebar-background: 235 30% 8%;
+    --sidebar-foreground: 40 30% 90%;
+    --sidebar-primary: 42 90% 55%;
+    --sidebar-primary-foreground: 235 30% 8%;
+    --sidebar-accent: 235 20% 16%;
+    --sidebar-accent-foreground: 40 30% 90%;
+    --sidebar-border: 235 18% 22%;
+    --sidebar-ring: 42 90% 55%;
   }
 }
 
@@ -59,7 +64,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Google Sans Flex', system-ui, sans-serif;
   }
 
@@ -69,44 +74,147 @@
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-glass/60 backdrop-blur-xl border border-glass-border/50 rounded-xl;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  .font-fantasy {
+    font-family: 'Cinzel', serif;
   }
 
-  .glass-card-hover {
-    @apply glass-card transition-all duration-500;
+  .fantasy-card {
+    @apply relative rounded-xl overflow-hidden;
+    background: linear-gradient(135deg, 
+      hsl(235 25% 13% / 0.85), 
+      hsl(235 25% 16% / 0.7));
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--gold) / 0.15);
+    box-shadow: 
+      0 4px 24px hsl(235 30% 5% / 0.5),
+      inset 0 1px 0 hsl(var(--gold) / 0.08);
   }
 
-  .glass-card-hover:hover {
-    border-color: hsl(var(--neon-cyan) / 0.3);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
-                0 0 20px -5px hsl(var(--neon-cyan) / 0.15);
+  .fantasy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      hsl(var(--gold) / 0.5), 
+      hsl(var(--gold-light) / 0.3),
+      transparent);
   }
 
-  .neon-text {
-    color: hsl(var(--neon-cyan));
-    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5),
-                 0 0 40px hsl(var(--neon-cyan) / 0.2);
+  .fantasy-card-hover {
+    @apply fantasy-card transition-all duration-500;
   }
 
-  .neon-glow {
-    box-shadow: 0 0 15px hsl(var(--neon-cyan) / 0.3),
-                0 0 45px hsl(var(--neon-cyan) / 0.1);
+  .fantasy-card-hover:hover {
+    border-color: hsl(var(--gold) / 0.35);
+    box-shadow: 
+      0 8px 40px hsl(var(--gold) / 0.1),
+      0 0 30px hsl(var(--gold) / 0.05),
+      inset 0 1px 0 hsl(var(--gold) / 0.15);
+    transform: translateY(-2px);
+  }
+
+  .golden-text {
+    color: hsl(var(--gold));
+    text-shadow: 0 0 20px hsl(var(--gold) / 0.3),
+                 0 0 60px hsl(var(--gold) / 0.1);
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)));
+    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+  }
+
+  .gradient-text-magic {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--mystic-purple)));
   }
 
   .section-container {
-    @apply max-w-6xl mx-auto px-6 py-24;
+    @apply max-w-6xl mx-auto px-6 py-20;
+  }
+
+  .quest-node {
+    @apply w-5 h-5 rounded-full border-2;
+    border-color: hsl(var(--gold));
+    background: hsl(var(--gold) / 0.3);
+    box-shadow: 0 0 12px hsl(var(--gold) / 0.4),
+                0 0 30px hsl(var(--gold) / 0.15);
+  }
+
+  .quest-node-active {
+    @apply quest-node;
+    background: hsl(var(--gold));
+    box-shadow: 0 0 16px hsl(var(--gold) / 0.6),
+                0 0 40px hsl(var(--gold) / 0.25);
+  }
+
+  .map-path {
+    background: linear-gradient(180deg,
+      hsl(var(--gold) / 0.5),
+      hsl(var(--emerald) / 0.3),
+      hsl(var(--mystic-purple) / 0.3),
+      hsl(var(--gold) / 0.4));
+  }
+
+  .skill-orb {
+    @apply relative flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300;
+    background: hsl(var(--gold) / 0.06);
+    border: 1px solid hsl(var(--gold) / 0.15);
+    color: hsl(var(--gold-light));
+  }
+
+  .skill-orb:hover {
+    background: hsl(var(--gold) / 0.12);
+    border-color: hsl(var(--gold) / 0.35);
+    box-shadow: 0 0 15px hsl(var(--gold) / 0.15);
+  }
+
+  .magic-input {
+    @apply w-full px-4 py-3 rounded-lg text-foreground transition-all duration-300;
+    background: hsl(var(--muted) / 0.5);
+    border: 1px solid hsl(var(--gold) / 0.15);
+  }
+
+  .magic-input::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .magic-input:focus {
+    outline: none;
+    border-color: hsl(var(--gold) / 0.4);
+    box-shadow: 0 0 15px hsl(var(--gold) / 0.1);
+  }
+
+  .magic-btn {
+    @apply w-full py-3 rounded-lg font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--warm-amber)));
+    color: hsl(var(--background));
+  }
+
+  .magic-btn:hover {
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.35);
+    transform: translateY(-1px);
   }
 }
 
-@layer utilities {
-  .perspective-1000 {
-    perspective: 1000px;
-  }
+/* Sparkle animations */
+@keyframes sparkle-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes magic-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+@keyframes path-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
